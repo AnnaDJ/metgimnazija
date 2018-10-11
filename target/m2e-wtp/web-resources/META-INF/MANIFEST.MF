@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: metgimnazija
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: UNDP
+Implementation-Vendor-Id: com.met.gimnazija
+Build-Jdk: 1.8.0_144
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/metgimnazija
+Created-By: Maven Integration for Eclipse
+

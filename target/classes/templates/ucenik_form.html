@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container" margin="200px">
+		<h2>Ucenici:</h2>
+<table class="table table-striped">
+<tr>
+    <th>ID</th>
+    <th>Broj knjizice</th>
+    <th>Ime roditelja</th> 
+    <th>Osnovna skola</th>
+    <th>User</th>
+    <th>Obrisi</th>
+    <th>Izmeni</th>   
+</tr>
+		<div th:unless="${#lists.isEmpty(ucenici)}">
+			<dl th:each="ucenik : ${ucenici}">
+			<tr>
+				<th><span th:text="${ucenik.ucenik_ID}">ID</span></th>
+				<th><span th:text="${ucenik.broj_knjizice}">Broj knjizice</span></th>
+		    	<th><span th:text="${ucenik.ime_roditelja}">Ime roditelja</span></th>
+				<th><span th:text="${ucenik.osnovna_skola}">Osnovna skola</span></th>
+				<th><span th:text="${ucenik.user.ime}" name="user">User</span></th>				
+				<th><a th:href="@{/deleteUcenik/{ucenik_ID}(ucenik_ID=${ucenik.ucenik_ID})}" class="btn btn-danger">Obrisi</a></th>
+				<th><a th:href="@{/updateUcenik/{ucenik_ID}(ucenik_ID=${ucenik.ucenik_ID})}" class="btn btn-primary btn-xs">Izmeni</a></th>
+				</tr>
+			</dl>
+			
+		</div>
+		<div th:if="${#lists.isEmpty(ucenici)}">
+			<p>Nema ucenika na vasoj listi</p>
+		</div>
+</table>
+		<hr />
+		<h3>Dodaj ucenika</h3>
+		<form th:action="@{/ucenik_form}" method="post">
+			<div class="form-group">
+				<label for="user_ID">User:</label>
+					<select name="user">
+						<option th:each="user : ${users}" th:value="${user.user_ID}"
+							th:text="${user.ime}" name="user"  />
+					</select>
+			</div>
+			<div class="form-group">
+				<label for="broj_knjizice">Broj knjizice:</label> <input type="text"
+					class="form-control" name="broj_knjizice"
+					th:field="${ucenik.broj_knjizice}"> </input><br />
+			</div>
+			<div class="form-group">
+				<label for="ime_roditelja">Ime roditelja:</label> <input type="text"
+					name="ime_roditelja" class="form-control"
+					th:field="${ucenik.ime_roditelja}"></input><br />
+				<div class="form-group">
+					<label for="osnovna_skola">Osnovna skola</label> <input type="text"
+						name="osnova_skola" class="form-control"
+						th:field="${ucenik.osnovna_skola}"></input><br />
+				</div>
+				
+			</div>
+			<br /> <input type="submit"></input>
+		</form>
+	</div>
+</body>
+</html>

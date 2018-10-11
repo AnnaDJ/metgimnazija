@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container">
+
+		<form th:object="${ucenik}" th:action="@{/ucenik_form}" action="#" method="post">
+			<input type="hidden" th:field="*{ucenik_ID}" class="form-control"/>
+					<div class="form-group">
+				<label for="broj_knjizice">Broj knjizice:</label> <input type="text"
+					class="form-control" name="broj_knjizice"
+					th:field="*{broj_knjizice}"> </input><br />
+			</div>
+			<div class="form-group">
+				<label for="ime_roditelja">Ime roditelja:</label> <input type="text"
+					name="ime_roditelja" class="form-control"
+					th:field="*{ime_roditelja}" ></input><br />
+				<div class="form-group">
+					<label for="osnovna_skola">Osnovna skola</label> <input type="text"
+						name="osnova_skola" class="form-control"
+						th:field="*{osnovna_skola}"></input><br />
+				</div>	
+			
+			<input type="submit" class="btn btn-primary" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>
